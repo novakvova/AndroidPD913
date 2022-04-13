@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageRequester imageRequester;
     private NetworkImageView myImage;
-    private Menu _menu = null;
 
     // constant to compare
     // the activity result code
@@ -52,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
 
         inflater.inflate(R.menu.main, menu);
-        _menu=menu;
+
+        menu.setGroupVisible(R.id.group_1, false);
+        menu.setGroupVisible(R.id.group_2, true);
+
         return true;
     }
 
@@ -65,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.m_login:
-                _menu.setGroupVisible(R.id.group_1, false);
-                _menu.setGroupVisible(R.id.group_2, true);
+
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 return true;
