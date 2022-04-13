@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.newmail.account.LoginActivity;
 import com.example.newmail.account.RegisterActivity;
 import com.example.newmail.constants.Urls;
 import com.example.newmail.network.ImageRequester;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageRequester imageRequester;
     private NetworkImageView myImage;
+    private Menu _menu = null;
 
     // constant to compare
     // the activity result code
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+
         inflater.inflate(R.menu.main, menu);
+        _menu=menu;
         return true;
     }
 
@@ -58,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.m_register:
                 intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.m_login:
+                _menu.setGroupVisible(R.id.group_1, false);
+                _menu.setGroupVisible(R.id.group_2, true);
+                intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 return true;
             default:
