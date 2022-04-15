@@ -12,13 +12,23 @@
             android:id="@+id/m_login"
             android:title="Вхід"
             app:showAsAction="never" />
+
+        <item
+            android:id="@+id/m_users"
+            android:title="Користувачі"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/m_logout"
+            android:title="Вийти"
+            app:showAsAction="never" />
     </group>
 
     <group
             android:id="@+id/group_2"
         android:visible="false">
         <item
-            android:id="@+id/m_logout"
+            android:id="@+id/m_testlogout"
             android:title="Вийти"
             app:showAsAction="never" />
     </group>

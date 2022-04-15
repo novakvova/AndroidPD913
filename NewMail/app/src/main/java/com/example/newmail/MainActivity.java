@@ -17,8 +17,11 @@ import android.widget.ImageView;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.newmail.account.LoginActivity;
 import com.example.newmail.account.RegisterActivity;
+import com.example.newmail.account.UsersActivity;
+import com.example.newmail.application.HomeApplication;
 import com.example.newmail.constants.Urls;
 import com.example.newmail.network.ImageRequester;
+import com.example.newmail.security.JwtSecurityService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -52,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         inflater.inflate(R.menu.main, menu);
 
-        menu.setGroupVisible(R.id.group_1, false);
-        menu.setGroupVisible(R.id.group_2, true);
+//        menu.setGroupVisible(R.id.group_1, false);
+//        menu.setGroupVisible(R.id.group_2, true);
 
         return true;
     }
@@ -67,8 +70,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.m_login:
-
                 intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.m_users:
+                intent = new Intent(this, UsersActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.m_logout:
+                JwtSecurityService jwtService = (JwtSecurityService) HomeApplication.getInstance();
+                jwtService.deleteToken();
+                intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
             default:
