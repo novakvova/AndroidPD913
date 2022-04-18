@@ -11,6 +11,7 @@ using NewMail.Web.Mapper;
 using NewMail.Web.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -68,9 +69,10 @@ builder.Services.AddAuthentication(options =>
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewMail.Web", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = assemblyName, Version = "v1" });
     c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
@@ -88,6 +90,8 @@ builder.Services.AddSwaggerGen(c =>
                         },new List<string>()
                     }
                 });
+    var fileDoc = Path.Combine(System.AppContext.BaseDirectory, $"{assemblyName}.xml");
+    c.IncludeXmlComments(fileDoc);
 });
 
 var app = builder.Build();
@@ -96,7 +100,7 @@ var app = builder.Build();
 //if (app.Environment.IsDevelopment())
 //{
     app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NewMail.Web v1"));
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{assemblyName} v1"));
 //}
 
 var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");

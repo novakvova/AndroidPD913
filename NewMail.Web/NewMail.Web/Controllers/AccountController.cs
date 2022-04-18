@@ -59,6 +59,15 @@ namespace NewMail.Web.Controllers
             return Ok(list);
         }
 
+        /// <summary>
+        /// Авторизація на API
+        /// </summary>
+        /// <param name="model">пошта та пароль користувача</param>
+        /// <returns>JWT - token sha256</returns>
+        /// <remarks>Awesomeness!</remarks>
+        /// <response code="200">Login user</response>
+        /// <response code="400">Login has missing/invalid values</response>
+        /// <response code="500">Oops! Can't create your login right now</response>
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
