@@ -117,6 +117,8 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.SeedData();
+
 app.MapControllers();
 
 app.Run();
