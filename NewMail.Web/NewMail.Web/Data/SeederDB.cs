@@ -11,13 +11,14 @@ namespace NewMail.Web.Data
             using(var scope = 
                 app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
                 try
                 {
+                    logger.LogInformation("Seeding Web And Localization Databases");
                     InitRoleAndUsers(scope);
                 }
                 catch (Exception ex)
                 {
-                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
                     logger.LogError("Problem seed database " + ex.Message);
 
                 }
