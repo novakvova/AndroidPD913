@@ -50,10 +50,11 @@ namespace NewMail.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         [Route("users")]
         public async Task<IActionResult> Users()
         {
+            //throw new AppException("Дика собака!");
             var list = _context.Users.Select(x => _mapper.Map<UserItemViewModel>(x)).ToList();
 
             return Ok(list);

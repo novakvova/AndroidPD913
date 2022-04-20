@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using NewMail.Web.Constants;
 using NewMail.Web.Data.Entities.Identity;
 
@@ -14,6 +15,9 @@ namespace NewMail.Web.Data
                 var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
                 try
                 {
+                    logger.LogInformation("Migrate DB Databases");
+                    var context = scope.ServiceProvider.GetRequiredService<AppEFContext>();
+                    context.Database.Migrate();
                     logger.LogInformation("Seeding Web And Localization Databases");
                     InitRoleAndUsers(scope);
                 }
@@ -44,6 +48,30 @@ namespace NewMail.Web.Data
                 {
                     Name = Roles.User
                 }).Result;
+            }
+            if (!userManager.Users.Any())
+            {
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<RoleManager<AppUser>>>();
+                string email = "admin@gmail.com";
+                var user = new AppUser
+                {
+                    Email = email,
+                    UserName = email,
+                    FirstName = "Петро",
+                    SecondName = "Шпрот",
+                    PhoneNumber = "+38(098)232 34 22",
+                    Photo = "1.jpg"
+                };
+                var result = userManager.CreateAsync(user, "12345").Result;
+                if (result.Succeeded)
+                {
+                    logger.LogWarning("Create user " + user.UserName);
+                    result = userManager.AddToRoleAsync(user, Roles.Admin).Result;
+                }
+                else
+                {
+                    logger.LogError("Faild create user " + user.UserName);
+                }
             }
         }
     }
