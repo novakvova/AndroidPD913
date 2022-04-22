@@ -9,9 +9,11 @@ import com.example.newmail.R;
 import com.example.newmail.account.dto.UserDTO;
 import com.example.newmail.account.network.AccountService;
 import com.example.newmail.account.userscard.UsersAdapter;
+import com.example.newmail.application.HomeApplication;
 import com.example.newmail.utils.CommonUtils;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,7 +45,9 @@ public class UsersActivity extends AppCompatActivity {
                     public void onResponse(Call<List<UserDTO>> call, Response<List<UserDTO>> response) {
                         if(response.isSuccessful())
                         {
-                            adapter=new UsersAdapter(response.body());
+                            adapter=new UsersAdapter(response.body(),
+                                            UsersActivity.this::onClickByItem,
+                                            UsersActivity.this::onClickEditUser);
                             rcvUsers.setAdapter(adapter);
                         }
                         CommonUtils.hideLoading();
@@ -55,6 +59,14 @@ public class UsersActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void onClickByItem(UserDTO user) {
+        Toast.makeText(HomeApplication.getAppContext(), user.getEmail(), Toast.LENGTH_LONG).show();
+    }
+
+    private void onClickEditUser(UserDTO user) {
+        Toast.makeText(HomeApplication.getAppContext(), "EditUser "+user.getEmail(), Toast.LENGTH_LONG).show();
     }
 }
 
