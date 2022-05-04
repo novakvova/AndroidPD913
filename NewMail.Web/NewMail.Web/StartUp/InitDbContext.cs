@@ -1,8 +1,8 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NewMail.Web.Data;
-using NewMail.Web.Data.Entities.Identity;
+using NewMail.Data;
+using NewMail.Data.Entities.Identity;
 
 namespace NewMail.Web.StartUp
 {

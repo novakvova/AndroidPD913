@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NewMail.Web.Data;
-using NewMail.Web.Data.Entities.Identity;
+using NewMail.Data;
+using NewMail.Data.Entities.Identity;
 using NewMail.Web.Helpers;
 using NewMail.Web.Models;
 using NewMail.Web.Services;
@@ -50,7 +50,7 @@ namespace NewMail.Web.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [Route("users")]
         public async Task<IActionResult> Users()
         {
@@ -104,5 +104,7 @@ namespace NewMail.Web.Controllers
                 return BadRequest(new { error = "Помилка на сервері" });
             }
         }
+    
+    
     }
 }

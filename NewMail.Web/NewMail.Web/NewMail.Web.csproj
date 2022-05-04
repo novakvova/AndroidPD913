@@ -26,4 +26,9 @@
 		<PackageReference Include="System.Drawing.Common" Version="5.0.3" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\NewMail.Application\NewMail.Application.csproj" />
+	  <ProjectReference Include="..\NewMail.Data\NewMail.Data.csproj" />
+	</ItemGroup>
+
 </Project>

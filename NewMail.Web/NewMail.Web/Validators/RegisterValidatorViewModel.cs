@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Identity;
-using NewMail.Web.Data.Entities.Identity;
+using NewMail.Data.Entities.Identity;
 using NewMail.Web.Models;
 
 namespace NewMail.Web.Validators

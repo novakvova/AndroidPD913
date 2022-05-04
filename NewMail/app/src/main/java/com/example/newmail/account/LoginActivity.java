@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.newmail.BaseActivity;
 import com.example.newmail.MainActivity;
 import com.example.newmail.R;
 import com.example.newmail.account.dto.AccountResponseDTO;
@@ -34,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private TextView tvInfo;
     private TextInputLayout textFieldEmail;
     private TextInputEditText txtEmail;

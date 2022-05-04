@@ -1,4 +1,4 @@
-using NewMail.Web.Data;
+using NewMail.Data;
 using NewMail.Web.Helpers;
 using NewMail.Web.Middleware;
 using NewMail.Web.StartUp;

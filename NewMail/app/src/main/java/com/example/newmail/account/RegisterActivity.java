@@ -11,6 +11,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.newmail.BaseActivity;
 import com.example.newmail.R;
 import com.example.newmail.account.dto.AccountResponseDTO;
 import com.example.newmail.account.dto.RegisterDTO;
@@ -25,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
     TextInputHelper email;
     TextInputHelper firstName;
     TextInputHelper secondName;

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NewMail.Web</name>
+    </assembly>
+    <members>
+        <member name="M:NewMail.Web.Controllers.AccountController.Login(NewMail.Web.Models.LoginViewModel)">
+            <summary>
+            Авторизація на API
+            </summary>
+            <param name="model">пошта та пароль користувача</param>
+            <returns>JWT - token sha256</returns>
+            <remarks>Awesomeness!</remarks>
+            <response code="200">Login user</response>
+            <response code="400">Login has missing/invalid values</response>
+            <response code="500">Oops! Can't create your login right now</response>
+        </member>
+        <member name="P:NewMail.Web.Models.LoginViewModel.Email">
+            <summary>
+            Емейл користувача
+            </summary>
+            <example>gg@gg.gg</example>
+        </member>
+        <member name="P:NewMail.Web.Models.LoginViewModel.Password">
+            <summary>
+            Пароль користувача
+            </summary>
+            <example>12345</example>
+        </member>
+    </members>
+</doc>

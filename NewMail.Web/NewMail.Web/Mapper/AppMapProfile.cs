@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using NewMail.Web.Data.Entities.Identity;
+using NewMail.Data.Entities.Identity;
 using NewMail.Web.Models;
 
 namespace NewMail.Web.Mapper

@@ -1,4 +1,6 @@
-﻿using NewMail.Web.Services;
+﻿using NewMail.Application.Interfaces;
+using NewMail.Application.Repositories;
+using NewMail.Web.Services;
 
 namespace NewMail.Web.StartUp
 {
@@ -7,6 +9,7 @@ namespace NewMail.Web.StartUp
         public static void UseAppServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
         }
     }
 }
