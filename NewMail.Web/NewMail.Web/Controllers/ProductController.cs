@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NewMail.Application.Interfaces;
+using NewMail.Web.Models;
+using NewMail.Web.Services;
 
 namespace NewMail.Web.Controllers
 {
@@ -8,15 +10,21 @@ namespace NewMail.Web.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private readonly IProductService _productservice;
+        public ProductController(IProductService _productservice)
         {
-            _productRepository = productRepository;
+            _productservice = _productservice;
         }
         [HttpGet]   
         public IActionResult GetAll()
         {
-            return Ok(_productRepository.Items.ToList());
+            return Ok();
+        }
+        [HttpGet]
+        public IActionResult Add(ProductCreateViewModel model)
+        {
+            _productservice.Create(model);
+            return Ok();
         }
     }
 }
