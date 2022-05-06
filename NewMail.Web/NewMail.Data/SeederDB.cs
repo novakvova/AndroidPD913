@@ -26,7 +26,7 @@ namespace NewMail.Data
                 }
                 catch (Exception ex)
                 {
-                    //logger.LogError("Problem seed database " + ex.Message);
+                    logger.LogError("Problem seed database " + ex.Message);
 
                 }
             }

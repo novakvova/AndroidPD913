@@ -9,5 +9,6 @@ namespace NewMail.Application.Interfaces
 {
     public interface IProductRepository : IBaseRepository<ProductEntity, int>
     {
+
     }
 }
